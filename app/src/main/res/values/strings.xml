@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MOAG</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="timer_message">Time elapsed(seconds): </string>
+    <string name="welcome_message">Welcome to Memory of a Goldfish! Please choose your theme: </string>
+    <string name="play">Play</string>
+    <string name="high_scores">High scores</string>
+    <string name="achievements">Achievements</string>
+    <string name="settings">Settings</string>
+    <string name="score_string"><b>Score</b></string>
+    <string name="string_sequence_string">Max sequence: </string>
+    <string name="string_time_string">Time elapsed (seconds): </string>
+    <string name="string_turns_string">Turns: </string>
+    <string name="congratulations_string"><b>Congratulations!</b></string>
+    <string name="num_turns">Number of turns: </string>
+    <string name="match_sequence_string">Longest match sequence: </string>
+    <string name="new_game">New Game</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="enter_name">Please enter your name!</string>
+</resources>

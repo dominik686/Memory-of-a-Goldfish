@@ -1,4 +1,4 @@
-package com.example.moag;
+package com.example.moag.volley;
 
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -7,18 +7,21 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
-import android.widget.ImageView;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.ImageRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.moag.models.Puzzle;
+import com.example.moag.models.Tile;
+import com.example.moag.volley.AcceptSSLCerts;
+import com.example.moag.volley.CustomImageRequest;
+import com.example.moag.volley.CustomJSONObjectRequest;
+import com.example.moag.volley.VolleyImageResponse;
+import com.example.moag.volley.VolleyJSONObjectResponse;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,12 +32,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import static android.net.Uri.parse;
-
-public class VolleyPuzzleRetriever implements VolleyJSONObjectResponse, VolleyImageResponse{
+public class VolleyPuzzleRetriever implements VolleyJSONObjectResponse, VolleyImageResponse {
     String mUrl;
     Context mContext;
     RequestQueue mRequestQueue;

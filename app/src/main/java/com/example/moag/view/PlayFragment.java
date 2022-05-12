@@ -1,9 +1,8 @@
-package com.example.moag;
+package com.example.moag.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,9 +14,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.SystemClock;
@@ -27,22 +24,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
-import android.widget.AdapterView;
-import android.widget.Chronometer;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import java.lang.reflect.Array;
+import com.example.moag.models.Achievements;
+import com.example.moag.viewmodel.GameViewModel;
+import com.example.moag.R;
+import com.example.moag.models.Puzzle;
+import com.example.moag.models.Score;
+import com.example.moag.models.Tile;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Timer;
 
 
 public class PlayFragment extends Fragment {

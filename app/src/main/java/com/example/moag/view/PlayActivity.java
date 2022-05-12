@@ -1,4 +1,4 @@
-package com.example.moag;
+package com.example.moag.view;
 
 import androidx.fragment.app.Fragment;
 

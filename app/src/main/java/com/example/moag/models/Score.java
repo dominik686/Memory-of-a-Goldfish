@@ -1,25 +1,10 @@
-package com.example.moag;
+package com.example.moag.models;
 
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.util.Log;
-
-import com.android.volley.toolbox.JsonArrayRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.Set;
 
 public class Score
 {

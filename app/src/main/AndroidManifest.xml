@@ -16,19 +16,19 @@
         android:largeHeap="true"
         android:hardwareAccelerated="false"
         >
-        <activity android:name=".PlayActivity" android:configChanges="orientation|keyboardHidden|screenSize">
+        <activity android:name=".view.PlayActivity" android:configChanges="orientation|keyboardHidden|screenSize">
         </activity>
-        <activity android:name=".MainMenuActivity" >
+        <activity android:name=".view.MainMenuActivity" >
 
         </activity>
-        <activity android:name=".ThemeActivity">
+        <activity android:name=".view.ThemeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScoresActivity" />
+        <activity android:name=".view.ScoresActivity" />
     </application>
 
 </manifest>

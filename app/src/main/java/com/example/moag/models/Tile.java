@@ -1,4 +1,4 @@
-package com.example.moag;
+package com.example.moag.models;
 
 
 /* This class contain data and methods relevant to a single tile - name and bitmap, etc */

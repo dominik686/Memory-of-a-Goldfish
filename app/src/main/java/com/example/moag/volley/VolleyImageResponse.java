@@ -1,10 +1,9 @@
-package com.example.moag;
+package com.example.moag.volley;
 
 import android.graphics.Bitmap;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.android.volley.VolleyError;
+import com.example.moag.models.Tile;
 
 public interface VolleyImageResponse
 {

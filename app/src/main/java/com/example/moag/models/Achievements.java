@@ -1,4 +1,4 @@
-package com.example.moag;
+package com.example.moag.models;
 
 public class Achievements
 {

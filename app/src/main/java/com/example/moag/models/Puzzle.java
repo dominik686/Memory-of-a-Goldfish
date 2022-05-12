@@ -1,12 +1,8 @@
-package com.example.moag;
+package com.example.moag.models;
 
 
 /* This class contain data and methods relevant to the puzzle - list of tiles, bitmap of the default
 tile etc */
-
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 

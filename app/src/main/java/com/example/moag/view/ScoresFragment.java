@@ -1,4 +1,4 @@
-package com.example.moag;
+package com.example.moag.view;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +15,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moag.R;
+import com.example.moag.models.Score;
+
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.w3c.dom.Text;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ScoresFragment extends Fragment

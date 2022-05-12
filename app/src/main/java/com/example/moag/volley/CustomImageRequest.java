@@ -1,13 +1,12 @@
-package com.example.moag;
+package com.example.moag.volley;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
+import com.example.moag.models.Tile;
 
 public class CustomImageRequest  implements Response.Listener<Bitmap>, Response.ErrorListener
 {

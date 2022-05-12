@@ -1,4 +1,4 @@
-package com.example.moag;
+package com.example.moag.models;
 
 
 import android.content.Context;
@@ -8,16 +8,13 @@ import android.graphics.Bitmap;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
+import com.example.moag.volley.VolleyPuzzleRetriever;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 //This class contains ALL the data relavent to thegame
 public class Game

@@ -73,9 +73,9 @@ public class ScoresFragment extends Fragment
         {
             super(v);
             mScoreTextView = v.findViewById(R.id.scores_text);
-            mTurnsTextView = v.findViewById(R.id.turns_score);
-            mSequenceTextView = v.findViewById(R.id.sequence_score);
-            mTimeTextView = v.findViewById(R.id.time_score);
+            mTurnsTextView = v.findViewById(R.id.turns);
+            mSequenceTextView = v.findViewById(R.id.max_sequence);
+            mTimeTextView = v.findViewById(R.id.time_elapsed);
         }
 
     }
@@ -110,9 +110,9 @@ public class ScoresFragment extends Fragment
                 Integer sequence = score.getSequence();
                 Integer time = score.getTime();
 
-                 holder.mTurnsTextView.setText(getResources().getString(R.string.string_turns_string) + turns);
-                holder.mSequenceTextView.setText(getResources().getString(R.string.string_sequence_string) + sequence);
-                holder.mTimeTextView.setText(getResources().getString(R.string.string_time_string) + time);
+                 holder.mTurnsTextView.setText(turns.toString());
+                holder.mSequenceTextView.setText(sequence.toString());
+                holder.mTimeTextView.setText(time.toString());
             }
         }
 
@@ -138,7 +138,7 @@ public class ScoresFragment extends Fragment
         //Load the scores
         else
         {
-            JSONArray jsonArray = null;
+            JSONArray jsonArray;
             try {
                 jsonArray = new JSONArray(sharedPref.getString("score", "[]"));
 

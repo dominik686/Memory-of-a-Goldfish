@@ -2,6 +2,7 @@ package com.example.moag.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,6 +24,7 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
@@ -42,10 +44,8 @@ import java.util.List;
 
 
 public class PlayFragment extends Fragment {
-    private RecyclerView mPlayRecyclerView;
+    private RecyclerView recyclerView;
     private GameViewModel mGameViewModel;
-    private PlayAdapter mAdapter;
-    private String mUrl;
 
     public PlayFragment() {
         // Required empty public constructor
@@ -75,31 +75,33 @@ public class PlayFragment extends Fragment {
         //Get URL from intent
         Bundle extras = getActivity().getIntent().getExtras();
         if (extras != null) {
-            mUrl = extras.getString("URL");
+            String url = extras.getString("URL");
+            mGameViewModel = new GameViewModel(getActivity().getApplication(), url);
+
+        }
+        else
+        {
+            mGameViewModel = new GameViewModel(getActivity().getApplication(), "");
+
         }
 
 
-        mGameViewModel = new GameViewModel(getActivity().getApplication(), mUrl);
-        Puzzle temp = new Puzzle();
-
-
-        mPlayRecyclerView = v.findViewById(R.id.recyclerview);
-        mPlayRecyclerView.setLayoutManager(new GridLayoutManager(getActivity().getApplicationContext(), 5));
-        mPlayRecyclerView.setNestedScrollingEnabled(false);
-
-        mAdapter = new PlayAdapter(temp);
-        mPlayRecyclerView.setAdapter(mAdapter);
+        recyclerView = v.findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 5));
+        recyclerView.setNestedScrollingEnabled(false);
 
         final Observer<Puzzle> puzzleObserver = puzzle ->
         {
-            Puzzle test = mGameViewModel.getPuzzle(mUrl).getValue();
-            PlayAdapter newAdapter = new PlayFragment.PlayAdapter(test);
-            mPlayRecyclerView.setAdapter(newAdapter);
+           PlayAdapter newAdapter = new PlayAdapter(puzzle);
+           recyclerView.setAdapter(newAdapter);
+
         };
-        mGameViewModel.getPuzzle(mUrl).observe(this, puzzleObserver);
+        mGameViewModel.getPuzzle().observe(getViewLifecycleOwner(), puzzleObserver);
 
         return v;
     }
+
+
 
     //RecyclerView stuff
     public class PlayHolder extends RecyclerView.ViewHolder {
@@ -125,6 +127,8 @@ public class PlayFragment extends Fragment {
     }
 
     public class PlayAdapter extends RecyclerView.Adapter<PlayHolder> {
+
+
         Puzzle mPuzzle;
         ArrayList<Tile> mTiles;
         Tile mTileback;
@@ -160,7 +164,7 @@ public class PlayFragment extends Fragment {
             mTurns = 0;
             mSequence = 0;
             mStartTime = SystemClock.elapsedRealtime();
-             Collections.shuffle(mTiles);
+            // Collections.shuffle(mTiles);
         }
 
         @NonNull
@@ -173,7 +177,7 @@ public class PlayFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull PlayHolder holder, int position) {
+        public void onBindViewHolder(@NonNull PlayHolder holder, @SuppressLint("RecyclerView") int position) {
             //If the position is in solved tiles
             //Spin!@
             if (mSolvedTiles.contains(position)) {
@@ -221,7 +225,6 @@ public class PlayFragment extends Fragment {
                             public void onAnimationEnd(Animator animation) {
                                 holder.mItemImageView.setRotationY(270f);
                                 holder.mItemImageView.animate().rotationY(360f).setListener(null);
-
                                 //Change the bitmap
                                 holder.bindBitmap(mTileback.getBitmap());
                             }
@@ -326,6 +329,7 @@ public class PlayFragment extends Fragment {
             //
             else {
                 Log.d("Tile", "Pair NOT found!");
+
                 return false;
             }
         }
@@ -355,7 +359,7 @@ public class PlayFragment extends Fragment {
 
                 //Build the dialog
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
-                String index = Uri.parse(mUrl).getLastPathSegment();
+                String index = Uri.parse(mGameViewModel.getMUrl()).getLastPathSegment();
                 mScore.addNewScore(getContext(), index);
 
 
@@ -376,7 +380,7 @@ public class PlayFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         Intent intent = new Intent(getContext(), MainMenuActivity.class);
-                        intent.putExtra("URL", mUrl);
+                        intent.putExtra("URL", mGameViewModel.getMUrl());
                         getActivity().finish();
                         startActivity(intent);
 

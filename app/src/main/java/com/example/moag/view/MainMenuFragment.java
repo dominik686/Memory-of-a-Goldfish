@@ -47,8 +47,6 @@ public class MainMenuFragment extends Fragment
     {
         View v = inflater.inflate(R.layout.fragment_main_menu, container, false);
 
-        mAchievementsButton = v.findViewById(R.id.achievements_button);
-        mSettingsButton  = v.findViewById(R.id.settings_button);
         mHighScoresButton = v.findViewById(R.id.highScores_button);
         mPlayButton = v.findViewById(R.id.play_button);
 
